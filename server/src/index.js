@@ -1,8 +1,8 @@
-import { ApolloServer, gql } from 'apollo-server-express';
+import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
 import mongoose from 'mongoose';
 import { resolvers } from './resolvers';
-import { typeDefs } from './typeDefs';
+import { typeDefs } from './schemas';
 
 const PORT = 5000;
 

@@ -20,6 +20,7 @@ const startServer = async () => {
 
   await mongoose.connect(connected, {
     useNewUrlParser: true,
+    useFindAndModify: false,
   });
 
   app.listen({ port: PORT }, () =>

@@ -19,7 +19,7 @@ export const resolvers = {
       if (!post.id) {
         throw new Error('id не указан');
       }
-      return Post.findByIdAndUpdate(post.id, post, {
+      return Post.findOneAndUpdate(post.id, post, {
         new: true,
       });
     },

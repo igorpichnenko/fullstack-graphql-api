@@ -6,23 +6,21 @@ import { useQuery } from '@apollo/client';
 
 import { Box } from '@mui/material';
 import { Form } from '../Form';
-import { GET_ALL_USERS, GET_ONE_USER } from '../../query/user';
+import { GET_ALL_POST, GET_ONE_POST } from '../../query/post';
 
 export const Cards: React.FC = observer(() => {
-  const { cards } = useCardsStore();
-
-  const { data, loading, error } = useQuery(GET_ALL_USERS);
-  const { data: oneUser, loading: oneLoading } = useQuery(GET_ONE_USER, {
+  const { data, loading, error } = useQuery(GET_ALL_POST);
+  /*  const { data: oneUser, loading: oneLoading } = useQuery( GET_ONE_POST, {
     variables: {
       id: 1,
     },
-  });
-  const [users, setUsers] = useState<any>([]);
+  }); */
+  const [cards, setCards] = useState<any>([]);
 
   useEffect(() => {
+    console.log(data);
     if (!loading) {
-      console.log(data);
-      setUsers(data.getAllUsers);
+      setCards(data.getAllPost);
     }
   }, [data]);
 
@@ -30,7 +28,7 @@ export const Cards: React.FC = observer(() => {
     <>
       <Form />
       <Box display="flex" gap={10} pt={10} pl={10} flexWrap="wrap">
-        {cards.map((el, i) => (
+        {cards.map((el: any, i: any) => (
           <Box key={i}>
             <Card
               title={el.title}
@@ -42,16 +40,6 @@ export const Cards: React.FC = observer(() => {
           </Box>
         ))}
       </Box>
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        users.map((el: any) => (
-          <div key={el.id}>
-            {el.id}. {el.username}
-          </div>
-        ))
-      )}
-      {error && <div>{JSON.stringify(error)}</div>}
     </>
   );
 });

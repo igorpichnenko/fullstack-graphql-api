@@ -2,7 +2,7 @@ import { Post } from '../models/Post';
 
 export const resolvers = {
   Query: {
-    getAllPosts: () => Post.find(),
+    getAllPost: () => Post.find(),
     getOnePost: (_, { id }) => {
       if (!id) {
         throw new Error('id не указан');

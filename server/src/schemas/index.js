@@ -2,7 +2,7 @@ import { gql } from 'apollo-server-express';
 
 export const typeDefs = gql`
   type Query {
-    getAllPosts: [Post]
+    getAllPost: [Post]
     getOnePost(id: String): Post
     deletePost(id: String): Post
     updatePost(post: inputPost): Post
